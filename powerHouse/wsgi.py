@@ -13,4 +13,6 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'powerHouse.settings')
 
+##Uno de los programadores fue sacrificado para que el deploy funcionara 
+
 application = get_wsgi_application()
