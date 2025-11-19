@@ -6,3 +6,4 @@ psycopg==3.2.12
 psycopg-binary==3.2.12
 sqlparse==0.5.3
 tzdata==2025.2
+whitenoise==6.11.0

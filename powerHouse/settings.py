@@ -135,4 +135,10 @@ STATICFILES_DIRS = [
     BASE_DIR / 'application' / 'static',
 ]
 
+# Configuración de WhiteNoise para servir archivos estáticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 ALLOWED_HOSTS =['*']
