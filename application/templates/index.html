@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
+    <title>Power House</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#">
+              <img src="{% static 'img/POWPRIN-removebg-preview.png' %}" alt="logo" />
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#program">Programs</a></li>
+          <li><a href="#testimonial">Testimonials</a></li>
+          <li>
+            <button class="btn"><a href="{% url 'dashboard' %}">Inicia seccion</a></button>
+          </li>
+        </ul>
+      </nav>
+      <div class="section__container header__container" id="home">
+        <div class="header__image">
+          <img src="{% static 'img/header.png' %}" alt="header" />
+        </div>
+        <div class="header__content">
+          <h1>CONSIGUE UN CUERPO SANO CON LOS EJERCICIOS PERFECTOS</h1>
+          <p class="section__description">
+            Logra el cuerpo de tus sueños con ejercicios diseñados por expertos, adaptados a tus necesidades
+para desarrollar fuerza, resistencia y bienestar general. Tanto si eres principiante como si eres un apasionado del fitness,
+
+nuestros entrenamientos están diseñados para ayudarte a mantenerte activo, ganar músculo y mejorar tu flexibilidad.
+          </p>
+          <div class="header__btn">
+            <button class="btn">Empezar</button>
+          </div>
+          <div class="header__stats">
+            <div>
+              <h4>105+</h4>
+              <p>Entrenadores expertos</p>
+            </div>
+            <div>
+              <h4>970+</h4>
+              <p>Miembros Inscritos</p>
+            </div>
+            <div>
+              <h4>135+</h4>
+              <p>Programas Fitness</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="about" id="about">
+      <div class="section__container about__container">
+        <div class="about__image">
+          <img src="{% static 'img/about.jpg' %}" alt="about" />
+        </div>
+        <div class="about__content">
+          <h2 class="section__header">Prepárate Para Alcanzar Tus Objetivos de Fitness</h2>
+          <p class="section__description">
+            En POWER HOUSE, nos comprometemos a ayudarte a alcanzar tus objetivos de fitness
+
+con la guía de expertos, entrenamientos personalizados y un ambiente motivador.
+
+Ya sea que busques aumentar tu fuerza, mejorar tu resistencia o mantenerte activo,
+
+te brindamos el apoyo y el entrenamiento adecuados para que mantengas el rumbo.
+          </p>
+          <p class="section__description">
+            ¡Comienza hoy tu viaje y transforma tu salud con la rutina de ejercicios perfecta!
+
+¡Rutina de ejercicios perfecta!
+          </p>
+          <div class="about__btn">
+            <button class="btn">
+Ruta gratuita hoy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="program" id="program">
+      <div class="section__container program__container">
+        <div class="program__header">
+          <h2 class="section__header">Los mejores programas que ofrecemos para ti</h2>
+          <p class="section__description">
+            Desde entrenamiento de fuerza y ​​yoga hasta programas de cardio y pérdida de peso,
+
+ofrecemos una variedad de entrenamientos para mantenerte motivado y en el camino correcto.
+
+Únete a nosotros y encuentra el programa perfecto para ti.
+          </p>
+        </div>
+        <div class="program__grid">
+          <div class="program__card">
+            <img src="{% static 'img/program-1.png' %}"  alt="program" />
+            <h4>Entrenamiento de fuerza</h4>
+            <p>
+              Desarrolla músculo, aumenta la resistencia y mejora la fuerza general
+
+con nuestras sesiones de entrenamiento de resistencia y pesas dirigidas por expertos.
+            </p>
+            <a href="#">
+              Más información
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+          <div class="program__card">
+            <img src="{% static 'img/program-2.png' %}" alt="program" />
+            <h4>Yoga Básico</h4>
+            <p>
+              Mejora tu flexibilidad, equilibrio y bienestar mental con sesiones de yoga guiadas
+
+diseñadas para la relajación y la paz interior.
+            </p>
+            <a href="#">
+              Más información.
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+          <div class="program__card">
+            <img src="{% static 'img/program-3.png' %}" alt="program" />
+            <h4>Culturismo</h4>
+            <p>
+              Esculpe y define tu físico con entrenamientos específicos,
+
+asesoramiento experto y planes de entrenamiento personalizados.
+            </p>
+            <a href="#">
+              Más información
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+          <div class="program__card">
+            <img src="{% static 'img/program-4.png'%}" alt="program" />
+            <h4>Pérdida de peso</h4>
+            <p>
+              Quema calorías, acelera tu metabolismo y alcanza tu peso ideal
+
+con nuestros eficaces programas para quemar grasa y basados ​​en el ejercicio cardiovascular.
+            </p>
+            <a href="#">
+              Más información
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service">
+      <div class="section__container service__container">
+        <div class="service__content">
+          <h2 class="section__header">
+            ¿Por qué deberían las personas elegir los servicios de Power House?
+          </h2>
+          <ul class="service__list">
+            <li>
+              <h4>
+                <span><i class="ri-checkbox-circle-fill"></i></span>
+                Entrenamiento personal
+              </h4>
+              <p class="section__description">
+               Obtén planes de entrenamiento personalizados adaptados a tus objetivos de fitness con
+
+la guía individualizada de nuestros entrenadores profesionales.
+              </p>
+            </li>
+            <li>
+              <h4>
+                <span><i class="ri-checkbox-circle-fill"></i></span>
+                Entrenador experto
+              </h4>
+              <p class="section__description">
+                Entrena con expertos en fitness altamente cualificados y con amplia experiencia que
+
+te motivarán y apoyarán en cada paso del camino.
+
+              </p>
+            </li>
+            <li>
+              <h4>
+                <span><i class="ri-checkbox-circle-fill"></i></span>
+                Horarios flexibles
+              </h4>
+              <p class="section__description">
+                Disfruta de la comodidad de sesiones de entrenamiento que se adaptan a tu
+horario, lo que facilita mantenerte comprometido con tu
+proceso de fitness.
+              </p>
+            </li>
+          </ul>
+          <div class="service__btn">
+            <button class="btn">Únete hoy</button>
+          </div>
+        </div>
+        <div class="service__image">
+          <img src="{% static 'img/service.png' %}" alt="service" />
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial" id="testimonial">
+      <div class="section__container testimonial__container">
+        <div class="testimonial__content">
+          <h2 class="section__header">Lo que nuestros felices clientes dicen de nosotros</h2>
+          <p class="section__description">
+            ¡Escucha a nuestros miembros satisfechos que han transformado su entrenamiento con POWER HOUSE! Sus historias de éxito y experiencias demuestran la eficacia de nuestros programas, la orientación experta y el ambiente de apoyo.
+          </p>
+        </div>
+        <div class="testimonial__swiper">
+          <!-- Slider main container -->
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="testimonial__card">
+                  <div class="user__details">
+                    <img src="{% static 'img/user-1.jpg' %}" alt="user" />
+                    <div>
+                      <h4>Yerson Ochoa</h4>
+                      <h5>Ingeniero de Sistemas</h5>
+                    </div>
+                  </div>
+                  <div class="user__ratings">
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                  </div>
+                  <p class="section__description">
+                    POWER HOUSE ha transformado por completo mi enfoque del fitness.
+
+Las sesiones de entrenamiento personal son increíbles, ¡y he visto un progreso asombroso en mi fuerza y ​​resistencia!
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial__card">
+                  <div class="user__details">
+                    <img src="assets/user-2.jpg" alt="user" />
+                    <div>
+                      <h4>Luz Padilla</h4>
+                      <h5>Adm. Empresas</h5>
+                    </div>
+                  </div>
+                  <div class="user__ratings">
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                  </div>
+                  <p class="section__description">
+                    El programa de Yoga Básico de POWER HOUSE es justo lo que necesitaba.
+
+Los instructores son expertos y las sesiones han mejorado enormemente mi flexibilidad y bienestar mental.
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial__card">
+                  <div class="user__details">
+                    <img src="assets/user-3.jpg" alt="user" />
+                    <div>
+                      <h4>Pedro Bárcena</h4>
+                      <h5>Analista de Datos</h5>
+                    </div>
+                  </div>
+                  <div class="user__ratings">
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                    <span><i class="ri-star-fill"></i></span>
+                  </div>
+                  <p class="section__description">
+                   Me uní a POWER HOUSE para hacer culturismo y no podría estar más
+contento con los resultados. Los entrenadores expertos brindan la
+mejor orientación, ¡y el ambiente de entrenamiento es súper
+motivador!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <h4>Compañía</h4>
+          <ul class="footer__links">
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Por qué nosotros</a></li>
+            <li><a href="#">Seguridad</a></li>
+            <li><a href="#">Asociación</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Categorías</h4>
+          <ul class="footer__links">
+            <li><a href="#">Yoga Básico</a></li>
+            <li><a href="#">Entrenamiento de fuerza</a></li>
+            <li><a href="#">Culturismo</a></li>
+            <li><a href="#">Pérdida de peso</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contacta con nosotros</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span> +57 300843589
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-mail-fill"></i></span> info@powerhoouse.com
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-2-fill"></i></span> Calle 64 Carrera 5 Barrio La Castellana
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Suscríbase a nuestro boletín informativo</h4>
+          <form action="/">
+            <input type="text" placeholder="Enter your email" />
+            <button class="btn"><i class="ri-send-plane-fill"></i></button>
+          </form>
+          <p>No te pierdas ninguna actualización ni noticia en tu correo electrónico.</p>
+        </div>
+      </div>
+      <div class="section__container footer__bar">
+        <a href="#" class="footer__logo">
+          <img src="{% static 'img/POWPRIN-removebg-preview.png' %}" alt="logo" />
+        </a>
+        <p>Copyright © 2025 YPT WEBS SITES DESIGN . All rights reserved.</p>
+        <ul class="footer__socials">
+          <li>
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-twitter-fill"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>

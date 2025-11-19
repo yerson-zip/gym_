@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
+</head>
+</head>
+<body>
+     <div class="wrapper">
+
+        <form method="POST" id="registerForm">
+            {% csrf_token %}
+            <h1>Register</h1>
+
+            <div class="input-box">
+                <input type="text" id="text" name="nombre" placeholder="Nombre" required>
+                <i class='bx bxs-user'></i> 
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="email" name="correo" placeholder="Email" required>
+               <i class='bxr  bxs-envelope-alt'></i> 
+            </div>
+
+            <div class="input-box">
+                <input type="tel" name="telefono" id="text" placeholder="Telefono" required>
+                <i class='bxr  bxs-phone'></i>  
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                <i class='bx bxs-lock'></i> 
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                <i class='bx bxs-lock'></i> 
+            </div>
+
+            
+
+            <button type="submit" class="btn">Registrate</button>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <div class="register-link">
+                <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia seccion</a></p>
+            </div>
+
+        </form>
+        {% if error %}
+            <p style="color:red">{{ error }}</p>
+        {% endif %}
+    </div>
+
+
+</body>
+</html>

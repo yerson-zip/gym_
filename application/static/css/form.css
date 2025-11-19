@@ -1,0 +1,241 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0c0f14;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 25px;
+    color: #f7d702;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    display: grid;
+    gap: 30px;
+}
+
+.form-card,
+.table-card {
+    background: #10141b;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.05);
+}
+
+h2 {
+    margin-top: 0;
+    color: #f7d702;
+    font-size: 1.4rem;
+}
+
+/* FORMULARIO */
+.input-group {
+    margin-bottom: 18px;
+}
+
+
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #1a1f27;
+    color: white;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.edit {
+    color: #f7d702;
+}
+
+.save { background: #f7d702; color: black; }
+.update { background: #ffffff; }
+.clear { background: #555; }
+
+.save:hover { background: #ffeb4d; }
+.update:hover { background: #ffffff; }
+.clear:hover { background: #777; }
+
+/* TABLA */
+.table-card {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 600px;
+}
+
+thead {
+    background: #111827;
+}
+
+thead th {
+    padding: 14px;
+    text-align: left;
+    color: #f7d702;
+}
+
+tbody td {
+    padding: 12px;
+    background: #1a1f27;
+    border-bottom: 1px solid #111;
+}
+
+.acciones {
+    white-space: nowrap;
+}
+
+.acciones .btn {
+    margin: 2px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.btn.edit {
+    background: #ffffff;
+}
+
+.btn.delete {
+    background: #d62828;
+}
+
+.btn.edit:hover {
+    background: #ffffff;
+}
+
+.btn.delete:hover {
+    background: #ff4d4d;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-top: 20px;
+    }
+    
+    .container {
+        width: 95%;
+        gap: 20px;
+    }
+    
+    .form-card,
+    .table-card {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    table {
+        min-width: 500px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+        margin-top: 15px;
+    }
+    
+    .container {
+        width: 95%;
+        gap: 15px;
+        margin: 15px auto;
+    }
+    
+    .form-card,
+    .table-card {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    .input-group input,
+    .input-group textarea {
+        padding: 10px;
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    table {
+        min-width: 450px;
+        font-size: 0.85rem;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 8px;
+    }
+    
+    .acciones .btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}

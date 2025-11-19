@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas</title>
+    <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+<body>
+
+<h1 class="title"> Gestión de Reservas</h1>
+
+
+
+
+<div class="container">
+
+    <!-- FORMULARIO -->
+    <div class="form-card">
+        <h2>{{ accion }} Reserva</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label>Fecha:</label>
+                <input type="date" name="fecha" required value="{{ form.fecha.value|default:'' }}">
+            </div>
+
+            <div class="input-group">
+                <label>Hora:</label>
+                <input type="time" name="hora" required value="{{ form.hora.value|default:'' }}">
+            </div>
+
+            <div class="input-group">
+                <label>Actividad:</label>
+                <input type="text" name="actividad" maxlength="100" required value="{{ form.actividad.value|default:'' }}">
+            </div>
+
+            <div class="input-group">
+                <label>Notas:</label>
+                <textarea name="notas">{{ form.notas.value|default:'' }}</textarea>
+            </div>
+
+            <div class="buttons">
+                <button class="btn save" type="submit">Guardar</button>
+                 <button class="btn save" type="submit"><a href="{% url 'reserva_create' %}" class="btn cancel" style="color:black;">Limpiar</a></button>
+            </div>
+
+           
+
+        </form>
+    </div>
+
+    <!-- TABLA -->
+    <div class="table-card">
+        <h2>Reservas Registradas</h2>
+
+        <table "table-card">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Actividad</th>
+                    <th>Notas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% if reservas %}
+                    {% for r in reservas %}
+                        <tr>
+                            <td>{{ r.fecha }}</td>
+                            <td>{{ r.hora }}</td>
+                            <td>{{ r.actividad }}</td>
+                            <td>{{ r.notas }}</td>
+                            <td class="acciones">
+                                <a href="{% url 'reserva_update' r.id %}" class="btn edit">Editar</a>
+                                <a href="{% url 'reserva_delete' r.id %}" class="btn delete">Eliminar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align:center; opacity:.7;">
+                            No tienes reservas registradas.
+                        </td>
+                    </tr>
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

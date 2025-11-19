@@ -1,0 +1,220 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Power House Gym — Reservas</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">🏋️</div>
+        <div>
+          <div class="brand-title">Bienvenido {{ usuario.nombre }}</div>
+          <div class="brand-sub">Sistema de reservas</div>
+        </div>
+      </div>
+
+      <nav>
+        
+        <a href="#clases">Programas</a>
+        <a href="#reservas">Reservas</a>
+        <a href="#mis-reservas">Mis Reservas</a>
+        <a href="{% url 'logout' %}">Cerrar sesion</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Reserva tu clase en Power House</h1>
+        <p>Clases grupales y entrenamientos personalizados. Escoge día, hora y asegura tu cupo.</p>
+        <a class="cta" href="#reservas">Reservar ahora</a>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">105+</div>
+            <div class="stat-label">Entrenadores expertos</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">970+</div>
+            <div class="stat-label">Miembros inscritos</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">135+</div>
+            <div class="stat-label">Programas Fitness</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right"></div>
+    </section>
+
+    <!-- CLASES DESTACADAS -->
+    <section id="clases" class="section">
+      <h2>Clases destacadas</h2>
+      <div class="grid">
+        
+        <!-- CLASE 1: CrossFit -->
+        <div class="card">
+          <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80')">
+            <div class="card-overlay">
+              <div class="card-header">
+                <h3 class="card-title">CrossFit</h3>
+                <span class="badge-cupos">12 cupos disponibles</span>
+              </div>
+              <p class="card-description">Entrenamiento de alta intensidad.</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="coach-info">
+              <span class="coach-label">Coach:</span> Ana Gómez
+            </div>
+            
+            <div class="card-actions">
+              <a href="#" class="btn-ver">Ver</a>
+              <a href="#reservar" class="btn-reservar">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLASE 2: Spinning -->
+        <div class="card">
+          <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1521805103424-d8f8430e8933?w=500&q=80')">
+            <div class="card-overlay">
+              <div class="card-header">
+                <h3 class="card-title">Spinning</h3>
+                <span class="badge-cupos">14 cupos disponibles</span>
+              </div>
+              <p class="card-description">Cardio en bici estática.</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="coach-info">
+              <span class="coach-label">Coach:</span> J. Pérez
+            </div>
+            
+            <div class="card-actions">
+              <a href="#" class="btn-ver">Ver</a>
+              <a href="#reservar" class="btn-reservar">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLASE 3: Yoga Flow -->
+        <div class="card">
+          <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80')">
+            <div class="card-overlay">
+              <div class="card-header">
+                <h3 class="card-title">Yoga Flow</h3>
+                <span class="badge-cupos">18 cupos disponibles</span>
+              </div>
+              <p class="card-description">Flexibilidad y respiración.</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="coach-info">
+              <span class="coach-label">Coach:</span> María L.
+            </div>
+            
+            <div class="card-actions">
+              <a href="#" class="btn-ver">Ver</a>
+              <a href="#reservar" class="btn-reservar">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLASE 4: Funcional -->
+        <div class="card">
+          <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80')">
+            <div class="card-overlay">
+              <div class="card-header">
+                <h3 class="card-title">Funcional</h3>
+                <span class="badge-cupos">16 cupos disponibles</span>
+              </div>
+              <p class="card-description">Movimientos dinámicos.</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="coach-info">
+              <span class="coach-label">Coach:</span> Carlos M.
+            </div>
+            
+            <div class="card-actions">
+              <a href="#" class="btn-ver">Ver</a>
+              <a href="#reservar" class="btn-reservar">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="reservas" class="section">
+      <h2>Reservas</h2>
+      
+      <p class="small">Haz click en "Reservar" en cualquier clase.</p>
+      <a href="{% url 'reserva_create' %}" class="btn btn-primary">Ver mis reservas</a>
+    </section>
+
+    <footer id="contacto">
+      Power House Gym • Dirección ejemplo • Tel: 300 000 0000
+    </footer>
+  </div>
+
+  <!-- MODAL DE RESERVA -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Reservar clase</h3>
+        <a href="#" class="close">×</a>
+      </div>
+
+      <form>
+        <div style="margin-bottom: 20px;">
+          <strong style="font-size: 18px; color: var(--yellow);">Nombre de la clase</strong>
+          <br>
+          <span class="small">Coach: Nombre del coach</span>
+        </div>
+
+        <div class="form-row">
+          <input type="text" placeholder="Nombre completo" required />
+          <input type="email" placeholder="Correo electrónico" required />
+        </div>
+
+        <div class="form-row">
+          <input type="tel" placeholder="Teléfono" />
+          <input type="date" required />
+        </div>
+
+        <div class="form-row">
+          <select required style="grid-column: 1 / -1;">
+            <option value="">Selecciona hora</option>
+            <option>06:00</option>
+            <option>07:30</option>
+            <option>09:00</option>
+            <option>17:00</option>
+            <option>18:30</option>
+            <option>20:00</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" class="btn btn-ghost">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Eliminación</title>
+    <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
+    <!-- Estilos base del proyecto -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- Estilos del modal -->
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}">
+</head>
+
+<body>
+
+<!-- Fondo oscuro -->
+<div class="modal-overlay"></div>
+
+<!-- Modal -->
+<div class="modal-card">
+    <h2>¿Eliminar reserva?</h2>
+
+    <p>
+        Estás a punto de borrar la reserva de:
+        <strong>{{ reserva.actividad }}</strong>
+        Programada para el {{ reserva.fecha }} a las {{ reserva.hora }}
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="modal-buttons">
+            <a href="{% url 'reserva_create' %}" class="btn cancel">Cancelar</a>
+            <button type="submit" class="btn delete">Eliminar</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

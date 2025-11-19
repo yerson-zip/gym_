@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #ffd300;
+  --secondary-color: #ffd300;
+  --background-color-1: #262b32;
+  --background-color-2: #090c11;
+  --background-color-3: #57b81;
+  --extra-light: #dfdfdf;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(../img/red-reyes-Z6CqKIP_J18-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(50px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #ffff;
+  border-radius: 10px;
+  padding: 30px 40px;
+}
+
+.wrapper h1 {
+  color: var(--primary-color);
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #ffff;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+  color: #ffff;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center;
+}
+
+.remember-forgot label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+
+.remember-forgot a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.wrapper .btn:hover {
+  background: transparent;
+  color: #fff;
+  border: 3px solid #fff;
+  font-weight: 600;
+}
+
+.wrapper .register-link {
+  font-size: 16px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Media Queries para Responsividad */
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 25px 30px;
+  }
+
+  .wrapper h1 {
+    font-size: 32px;
+  }
+
+  .remember-forgot {
+    font-size: 13px;
+  }
+
+  .wrapper .register-link {
+    font-size: 14px;
+  }
+}
+
+/* Móviles y dispositivos pequeños */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .wrapper {
+    padding: 20px 25px;
+  }
+
+  .wrapper h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .wrapper .input-box {
+    height: 45px;
+    margin: 25px 0;
+  }
+
+  .input-box input {
+    font-size: 14px;
+    padding: 15px 40px 15px 15px;
+  }
+
+  .input-box i {
+    right: 15px;
+    font-size: 18px;
+  }
+
+  .remember-forgot {
+    font-size: 12px;
+    margin: -10px 0 15px;
+  }
+
+  .wrapper .btn {
+    height: 42px;
+    font-size: 15px;
+  }
+
+  .wrapper .register-link {
+    font-size: 13px;
+    margin: 15px 0 10px;
+  }
+
+  .error-message {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+/* Dispositivos muy pequeños */
+@media (max-width: 360px) {
+  .wrapper {
+    padding: 15px 20px;
+  }
+
+  .wrapper h1 {
+    font-size: 24px;
+  }
+
+  .input-box input {
+    font-size: 13px;
+  }
+
+  .remember-forgot {
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .wrapper .btn {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .wrapper .register-link {
+    font-size: 12px;
+  }
+}
