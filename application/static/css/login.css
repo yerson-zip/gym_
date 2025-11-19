@@ -8,6 +8,7 @@
   --background-color-3: #57b81;
   --extra-light: #dfdfdf;
   --white: #ffffff;
+  --error-color: #ff4444;
   --max-width: 1200px;
 }
 
@@ -16,6 +17,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,27 +34,47 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   padding: 20px;
 }
 
+/* Wrapper del formulario */
 .wrapper {
   width: 100%;
   max-width: 420px;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, .2);
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(50px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-  color: #ffff;
-  border-radius: 10px;
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: var(--white);
+  border-radius: 15px;
   padding: 30px 40px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Título */
 .wrapper h1 {
   color: var(--primary-color);
   font-size: 36px;
   text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Input Box */
 .wrapper .input-box {
   position: relative;
   width: 100%;
@@ -58,18 +85,32 @@ body {
 .input-box input {
   width: 100%;
   height: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  border: 2px solid rgba(255, 255, 255, .2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 40px;
   font-size: 16px;
-  color: #ffff;
+  color: var(--white);
   padding: 20px 45px 20px 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-box input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(255, 211, 0, 0.3);
 }
 
 .input-box input::placeholder {
-  color: #ffff;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-box input:-webkit-autofill,
+.input-box input:-webkit-autofill:hover,
+.input-box input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .input-box i {
@@ -78,14 +119,23 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
+  color: var(--white);
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
 
+.input-box input:focus + i {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+/* Remember & Forgot */
 .remember-forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 14.5px;
-  margin: -15px 0 15px;
+  margin: -15px 0 20px;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -93,114 +143,253 @@ body {
 .remember-forgot label {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .remember-forgot label input {
-  accent-color: #fff;
-  margin-right: 3px;
+  accent-color: var(--primary-color);
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .remember-forgot a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .remember-forgot a:hover {
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
+/* Button */
 .wrapper .btn {
   width: 100%;
   height: 45px;
-  background: #fff;
-  border: none;
+  background: var(--white);
+  border: 2px solid var(--white);
   outline: none;
   border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-size: 16px;
-  color: #333;
+  color: var(--background-color-2);
   font-weight: 600;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .wrapper .btn:hover {
   background: transparent;
-  color: #fff;
-  border: 3px solid #fff;
-  font-weight: 600;
+  color: var(--white);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(255, 211, 0, 0.4);
+  transform: translateY(-2px);
 }
 
+.wrapper .btn:active {
+  transform: translateY(0);
+}
+
+/* Register Link */
 .wrapper .register-link {
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
-  margin: 20px 0 15px;
+  margin: 25px 0 10px;
+}
+
+.register-link p {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .register-link a {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.register-link p a:hover {
+.register-link a:hover {
   text-decoration: underline;
+  color: #ffdd44;
 }
 
+/* Error Message */
 .error-message {
   text-align: center;
-  margin-top: 10px;
+  margin: 15px 0 10px;
   font-size: 14px;
-  color: #ff4444;
-  background: rgba(255, 68, 68, 0);
-  padding: 10px;
-  border-radius: 5px;
+  color: var(--error-color);
+  background: rgba(255, 68, 68, 0.15);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  animation: shake 0.4s ease;
+  display: block;
 }
 
-/* Media Queries para Responsividad */
+.error-message:empty {
+  display: none;
+  padding: 0;
+  margin: 0;
+}
 
-/* Tablets y dispositivos medianos */
-@media (max-width: 768px) {
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* ========================================
+   MEDIA QUERIES - RESPONSIVIDAD
+   ======================================== */
+
+/* Tablets medianas (992px) */
+@media (max-width: 992px) {
   .wrapper {
-    padding: 25px 30px;
-  }
-
-  .wrapper h1 {
-    font-size: 32px;
-  }
-
-  .remember-forgot {
-    font-size: 13px;
-  }
-
-  .wrapper .register-link {
-    font-size: 14px;
+    max-width: 400px;
   }
 }
 
-/* Móviles y dispositivos pequeños */
-@media (max-width: 480px) {
+/* Tablets (768px y menos) */
+@media (max-width: 768px) {
   body {
     padding: 15px;
   }
 
   .wrapper {
-    padding: 20px 25px;
+    max-width: 380px;
+    padding: 25px 30px;
+  }
+
+  .wrapper h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  .remember-forgot {
+    font-size: 13px;
+    margin: -10px 0 18px;
+  }
+
+  .wrapper .register-link {
+    font-size: 14px;
+    margin: 20px 0 10px;
+  }
+}
+
+/* Móviles grandes (600px) */
+@media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .wrapper {
+    max-width: 100%;
+  }
+}
+
+/* Móviles (480px y menos) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .wrapper {
+    padding: 25px 25px;
+    border-radius: 12px;
   }
 
   .wrapper h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   .wrapper .input-box {
-    height: 45px;
+    height: 48px;
     margin: 25px 0;
   }
 
   .input-box input {
+    font-size: 15px;
+    padding: 15px 40px 15px 18px;
+  }
+
+  .input-box i {
+    right: 18px;
+    font-size: 19px;
+  }
+
+  .remember-forgot {
+    font-size: 12.5px;
+    margin: -12px 0 18px;
+    gap: 8px;
+  }
+
+  .wrapper .btn {
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .wrapper .register-link {
+    font-size: 13.5px;
+    margin: 18px 0 8px;
+  }
+
+  .error-message {
+    font-size: 13px;
+    padding: 10px;
+    margin: 12px 0 8px;
+  }
+}
+
+/* Móviles pequeños (400px) */
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 20px 20px;
+  }
+
+  .wrapper h1 {
+    font-size: 26px;
+  }
+
+  .input-box input {
     font-size: 14px;
-    padding: 15px 40px 15px 15px;
+    padding: 14px 38px 14px 16px;
+  }
+
+  .remember-forgot {
+    font-size: 12px;
+  }
+}
+
+/* Dispositivos muy pequeños (360px y menos) */
+@media (max-width: 360px) {
+  body {
+    padding: 8px;
+  }
+
+  .wrapper {
+    padding: 18px 18px;
+    border-radius: 10px;
+  }
+
+  .wrapper h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .wrapper .input-box {
+    height: 45px;
+    margin: 22px 0;
+  }
+
+  .input-box input {
+    font-size: 13.5px;
+    padding: 12px 36px 12px 15px;
   }
 
   .input-box i {
@@ -209,18 +398,25 @@ body {
   }
 
   .remember-forgot {
-    font-size: 12px;
-    margin: -10px 0 15px;
+    font-size: 11.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: -10px 0 16px;
   }
 
   .wrapper .btn {
+    font-size: 14px;
     height: 42px;
-    font-size: 15px;
   }
 
   .wrapper .register-link {
-    font-size: 13px;
-    margin: 15px 0 10px;
+    font-size: 12.5px;
+    margin: 16px 0 6px;
+  }
+
+  .register-link p {
+    line-height: 1.4;
   }
 
   .error-message {
@@ -229,33 +425,40 @@ body {
   }
 }
 
-/* Dispositivos muy pequeños */
-@media (max-width: 360px) {
+/* Landscape en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    padding: 10px;
+  }
+
   .wrapper {
-    padding: 15px 20px;
+    max-width: 450px;
+    padding: 20px 30px;
   }
 
   .wrapper h1 {
-    font-size: 24px;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .wrapper .input-box {
+    height: 42px;
+    margin: 20px 0;
   }
 
   .input-box input {
-    font-size: 13px;
+    padding: 12px 38px 12px 16px;
   }
 
   .remember-forgot {
-    font-size: 11px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    margin: -10px 0 15px;
   }
 
   .wrapper .btn {
-    font-size: 14px;
     height: 40px;
   }
 
   .wrapper .register-link {
-    font-size: 12px;
+    margin: 15px 0 5px;
   }
 }

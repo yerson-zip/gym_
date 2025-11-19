@@ -190,7 +190,7 @@ nav a:hover::after {
 }
 
 .hero-right::before {
-  content: '💪';
+  content: url(../img/musculito.png);
   position: absolute;
   font-size: 200px;
   top: 50%;
@@ -199,7 +199,6 @@ nav a:hover::after {
   opacity: 0.15;
 }
 
-/* ===== SECCIONES ===== */
 .section {
   margin-top: 48px;
   animation: fadeInUp 0.6s ease-out;

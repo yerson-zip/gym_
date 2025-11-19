@@ -2,51 +2,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login - Power House</title>
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
 </head>
 <body>
 
     <div class="wrapper">
+        <form method="POST" id="loginForm"> 
+            {% csrf_token %}
+            
+            <h1>Login</h1>
 
-    <form method="POST" id="loginForm"> 
-    {% csrf_token %}
-      <h1>Login</h1>
+            <!-- Input Email -->
+            <div class="input-box">
+                <input 
+                    type="email" 
+                    name="correo" 
+                    id="correo" 
+                    placeholder="Email" 
+                    autocomplete="email"
+                    required
+                >
+                <i class='bx bxs-user'></i>
+            </div>
 
-      <div class="input-box">
-        <input type="text" name="correo" id="correo" placeholder="Email" required>
-        <i class='bx bxs-user'></i>
-      </div>
+            <!-- Input Password -->
+            <div class="input-box">
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Contraseña"
+                    autocomplete="current-password" 
+                    required
+                > 
+                <i class='bx bxs-lock-alt'></i>
+            </div>
 
-      <div class="input-box">
-        <input type="password" name="password" id="password" placeholder="Contraseña" required> 
-        <i class='bx bxs-lock'></i>
-      </div>
+            <!-- Remember & Forgot -->
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" name="remember"> 
+                    Recordar
+                </label>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
 
-      <div class="remember-forgot">
-        <label><input type="checkbox"> Recordar</label>
-        <a href="#">¿Olvidaste tu contraseña?</a>
-      </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Iniciar Sesión</button>
 
-      <button type="submit" class="btn">Login</button>
+            <!-- Error Message -->
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
 
-      
-      <div id="errorMessage" class="error-message"></div>
+            <!-- Register Link -->
+            <div class="register-link">
+                <p>¿Aún no tienes una cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+            </div>
+        </form>
+    </div>
 
-      <div class="register-link">
-        <p>¿Aún no tienes una cuenta?  <a href="{% url 'registro' %}">Registrate</a></p>
-      </div>
-    </form>
-
-  </div>
-
-  
-  
-  {% if error %}
-  <p style="color:red">{{ error }}</p>
-  {% endif %}
 
 </body>
 </html>
-

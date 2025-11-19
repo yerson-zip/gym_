@@ -1,59 +1,128 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Registro</title>
-    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registro - Power House</title>
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    
+  
     <link rel="icon" type="image/png" href="{% static 'img/icono.png' %}">
 </head>
-</head>
 <body>
-     <div class="wrapper">
-
+    <div class="wrapper">
         <form method="POST" id="registerForm">
             {% csrf_token %}
-            <h1>Register</h1>
-
-            <div class="input-box">
-                <input type="text" id="text" name="nombre" placeholder="Nombre" required>
-                <i class='bx bxs-user'></i> 
-            </div>
-
-            <div class="input-box">
-                <input type="text" id="email" name="correo" placeholder="Email" required>
-               <i class='bxr  bxs-envelope-alt'></i> 
-            </div>
-
-            <div class="input-box">
-                <input type="tel" name="telefono" id="text" placeholder="Telefono" required>
-                <i class='bxr  bxs-phone'></i>  
-            </div>
-
-            <div class="input-box">
-                <input type="password" name="password" id="password" placeholder="Contraseña" required>
-                <i class='bx bxs-lock'></i> 
-            </div>
-
-            <div class="input-box">
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña" required>
-                <i class='bx bxs-lock'></i> 
-            </div>
-
             
+            <h1>Registro</h1>
+            <p class="subtitle">Únete a Power House</p>
 
-            <button type="submit" class="btn">Registrate</button>
-
-            <div id="errorMessage" class="error-message"></div>
-
-            <div class="register-link">
-                <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia seccion</a></p>
+            <!-- Nombre -->
+            <div class="input-box">
+                <input 
+                    type="text" 
+                    name="nombre" 
+                    id="nombre" 
+                    placeholder="Nombre completo"
+                    autocomplete="name"
+                    required
+                >
+                <i class='bx bxs-user'></i>
             </div>
 
+            <!-- Email -->
+            <div class="input-box">
+                <input 
+                    type="email" 
+                    name="correo" 
+                    id="correo" 
+                    placeholder="Email"
+                    autocomplete="email"
+                    required
+                >
+                <i class='bx bxs-envelope'></i>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="input-box">
+                <input 
+                    type="tel" 
+                    name="telefono" 
+                    id="telefono" 
+                    placeholder="Teléfono"
+                    autocomplete="tel"
+                    pattern="[0-9]{10}"
+                    title="Ingresa un número de 10 dígitos"
+                    required
+                >
+                <i class='bx bxs-phone'></i>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="input-box">
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Contraseña"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+                <i class='bx bxs-lock-alt'></i>
+                <span class="toggle-password" onclick="togglePassword('password')">
+                    <i class='bx bx-show' id="toggleIcon-password"></i>
+                </span>
+            </div>
+
+            <!-- Confirmar Contraseña -->
+            <div class="input-box">
+                <input 
+                    type="password" 
+                    name="confirmPassword" 
+                    id="confirmPassword" 
+                    placeholder="Confirmar contraseña"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+                <i class='bx bxs-lock-alt'></i>
+                <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                    <i class='bx bx-show' id="toggleIcon-confirmPassword"></i>
+                </span>
+            </div>
+
+            <!-- Términos y Condiciones -->
+            <div class="terms">
+                <label>
+                    <input type="checkbox" name="terms" id="terms" required>
+                    Acepto los <a href="#">términos y condiciones</a>
+                </label>
+            </div>
+
+            <!-- Botón de Registro -->
+            <button type="submit" class="btn">Registrarse</button>
+
+            <!-- Mensaje de Error -->
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+            <!-- Link de Login -->
+            <div class="register-link">
+                <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+            </div>
         </form>
-        {% if error %}
-            <p style="color:red">{{ error }}</p>
-        {% endif %}
     </div>
 
 
