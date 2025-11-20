@@ -7,6 +7,7 @@ def index(request):
     return render(request, "index.html")
 
 def login(request):
+    
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -53,16 +54,24 @@ def registro(request):
                         "error": "Las contraseñas no coinciden"
                     }
                 )
-        hashed_password = make_password(password)
+        
+        try:
+            usuario = Usuario.objects.get(correo=correo)
+            if usuario is not None:
+                return render(request, "registro.html", {"form":form})
 
-        Usuario.objects.create(
+        except Usuario.DoesNotExist:
+
+            hashed_password = make_password(password)
+
+            Usuario.objects.create(
                 nombre=nombre,
                 correo=correo,
                 telefono=telefono,
                 password=hashed_password
             )
         
-        return redirect("login")
+            return redirect("login")
     else:
         form = UsuarioForm()
 
