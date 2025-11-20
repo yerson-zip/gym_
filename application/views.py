@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.hashers import make_password , check_password
 from .models import Usuario, Reserva
 from .forms import LoginForm, UsuarioForm, ReservaForm
 
@@ -13,9 +14,16 @@ def login(request):
             password = form.cleaned_data["password"]
 
             try:
-                usuario = Usuario.objects.get(correo=correo, password=password)
-                request.session["usuario_id"] = usuario.id
-                return redirect("dashboard")
+                usuario = Usuario.objects.get(correo=correo)
+
+                if check_password(password, usuario.password):
+                    request.session["usuario_id"] = usuario.id
+                    return redirect("dashboard")
+                
+                else:
+                    return render(request, "login.html", {"form": form, "error": "Credenciales inválidas"})
+    
+
             except Usuario.DoesNotExist:
                 return render(request, "login.html", {"form": form, "error": "Credenciales inválidas"})
     else:
@@ -45,12 +53,13 @@ def registro(request):
                         "error": "Las contraseñas no coinciden"
                     }
                 )
-        
+        hashed_password = make_password(password)
+
         Usuario.objects.create(
                 nombre=nombre,
                 correo=correo,
                 telefono=telefono,
-                password=password
+                password=hashed_password
             )
         
         return redirect("login")
