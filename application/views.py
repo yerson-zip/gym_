@@ -79,8 +79,13 @@ def dashboard(request):
     if "usuario_id" not in request.session:
         return redirect("login")
 
-    usuario = Usuario.objects.get(id=request.session["usuario_id"])
+    try:
+
+        usuario = Usuario.objects.get(id=request.session["usuario_id"])
     
+    except Usuario.DoesNotExist:
+        request.session.flush()
+        return redirect("login")
 
     return render(request, "dashboard.html", {"usuario": usuario})
 
